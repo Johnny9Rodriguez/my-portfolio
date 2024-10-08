@@ -4,7 +4,7 @@ import Root from './pages/Root';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
 import ContactPage from './pages/ContactPage';
-import LoadingScreen from './components/LoadingScreen';
+import LoadingScreen from './pages/LoadingScreen';
 import BackgroundCanvas from './three/BackgroundCanvas';
 
 function App() {
