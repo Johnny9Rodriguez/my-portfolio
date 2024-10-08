@@ -4,7 +4,7 @@ import useMousePosition from '../../hooks/useMousePosition';
 import useAppStore from '../../stores/appStore';
 import { lerp, smoothstep } from '../../utils/mathHelpers';
 
-function HomeTagAnimation({ objectRef }) {
+function HomeTagAnimation({ objectRef, position }) {
     const { normalizedMousePosition } = useMousePosition();
     const { routerPath, scrollRatio } = useAppStore();
 
@@ -34,7 +34,7 @@ function HomeTagAnimation({ objectRef }) {
                 delta * 12
             );
 
-            objectRef.current.position.x = currentX.current - 3;
+            objectRef.current.position.x = position[0] + currentX.current - 3;
             objectRef.current.position.y = currentY.current;
         }
     });

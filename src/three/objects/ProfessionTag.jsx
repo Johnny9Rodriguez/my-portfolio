@@ -2,14 +2,14 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Text3D } from '@react-three/drei';
 import * as THREE from 'three';
+import useShaderStore from '../../stores/shaderStore';
 import { hexToRgb } from '../../utils/colorHelpers';
-import useAppStore from '../../stores/appStore';
 
 function ProfessionTag() {
     const [shaderMaterial, setShaderMaterial] = useState(null);
     const tagRef = useRef(null);
 
-    const { shaders } = useAppStore();
+    const { shaders } = useShaderStore();
 
     useEffect(() => {
         const vertexShader = shaders.professionTagVert;
