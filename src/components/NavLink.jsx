@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useNavStore } from '../stores/navStore';
 import { FaSquareFull } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import useAppStore from '../stores/appStore';
 
 function NavLink({ name, isMobile }) {
-    const { selectedNavLink, setSelectedNavLink } = useNavStore();
+    const { routerPath, setRouterPath } = useAppStore();
     const [isSelected, setIsSelected] = useState(false);
     const [mouseOver, setMouseOver] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        setIsSelected(selectedNavLink === name);
-    }, [selectedNavLink, name]);
+        setIsSelected(routerPath === name);
+    }, [routerPath, name]);
 
     const selectedStyle = 'text-[#0098db]';
 
@@ -20,7 +20,7 @@ function NavLink({ name, isMobile }) {
     const squareOnHover = 'opacity-100 scale-50';
 
     const handleClick = () => {
-        setSelectedNavLink(name);
+        setRouterPath(name);
         navigate('/' + name);
     };
 
