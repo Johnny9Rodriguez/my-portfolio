@@ -2,37 +2,41 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { Text3D } from '@react-three/drei';
 import * as THREE from 'three';
-import useShaderStore from '../../stores/shaderStore';
 import { hexToRgb } from '../../utils/colorHelpers';
 
 function ProfessionTag() {
     const [shaderMaterial, setShaderMaterial] = useState(null);
     const tagRef = useRef(null);
 
-    const { shaders } = useShaderStore();
-
     useEffect(() => {
-        const vertexShader = shaders.professionTagVert;
-        const fragmentShader = shaders.professionTagFrag;
+        const loadShaders = async () => {
+            const vertexShader = await fetch('/shaders/professionTag.vert').then((res) =>
+                res.text()
+            );
+            const fragmentShader = await fetch('/shaders/professionTag.frag').then(
+                (res) => res.text()
+            );
 
-        const material = new THREE.ShaderMaterial({
-            vertexShader,
-            fragmentShader,
-            uniforms: {
-                uTime: { value: 0.0 },
-                uResolution: {
-                    value: new THREE.Vector2(
-                        window.innerWidth,
-                        window.innerHeight
-                    ),
+            const material = new THREE.ShaderMaterial({
+                vertexShader,
+                fragmentShader,
+                uniforms: {
+                    uTime: { value: 0.0 },
+                    uResolution: {
+                        value: new THREE.Vector2(
+                            window.innerWidth,
+                            window.innerHeight
+                        ),
+                    },
+                    uColorOne: { value: hexToRgb('#0ce6f2') },
+                    uColorTwo: { value: hexToRgb('#0098db') },
                 },
-                uColorOne: { value: hexToRgb('#0ce6f2') },
-                uColorTwo: { value: hexToRgb('#0098db') },
-            },
-        });
+            });
 
-        setShaderMaterial(material);
-    }, [shaders]);
+            setShaderMaterial(material);
+        };
+        loadShaders();
+    }, []);
 
     useFrame((state) => {
         if (tagRef.current) {
