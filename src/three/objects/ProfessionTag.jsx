@@ -3,39 +3,33 @@ import { useFrame } from '@react-three/fiber';
 import { Text3D } from '@react-three/drei';
 import * as THREE from 'three';
 import { hexToRgb } from '../../utils/colorHelpers';
+import { professionVert, professionFrag } from '../../data/shaderData';
 
 function ProfessionTag() {
     const [shaderMaterial, setShaderMaterial] = useState(null);
     const tagRef = useRef(null);
 
     useEffect(() => {
-        const loadShaders = async () => {
-            const vertexShader = await fetch('/shaders/professionTag.vert').then((res) =>
-                res.text()
-            );
-            const fragmentShader = await fetch('/shaders/professionTag.frag').then(
-                (res) => res.text()
-            );
+        const vertexShader = professionVert;
+        const fragmentShader = professionFrag;
 
-            const material = new THREE.ShaderMaterial({
-                vertexShader,
-                fragmentShader,
-                uniforms: {
-                    uTime: { value: 0.0 },
-                    uResolution: {
-                        value: new THREE.Vector2(
-                            window.innerWidth,
-                            window.innerHeight
-                        ),
-                    },
-                    uColorOne: { value: hexToRgb('#0ce6f2') },
-                    uColorTwo: { value: hexToRgb('#0098db') },
+        const material = new THREE.ShaderMaterial({
+            vertexShader,
+            fragmentShader,
+            uniforms: {
+                uTime: { value: 0.0 },
+                uResolution: {
+                    value: new THREE.Vector2(
+                        window.innerWidth,
+                        window.innerHeight
+                    ),
                 },
-            });
+                uColorOne: { value: hexToRgb('#0ce6f2') },
+                uColorTwo: { value: hexToRgb('#0098db') },
+            },
+        });
 
-            setShaderMaterial(material);
-        };
-        loadShaders();
+        setShaderMaterial(material);
     }, []);
 
     useFrame((state) => {

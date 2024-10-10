@@ -5,6 +5,7 @@ import { hexToRgb } from '../utils/colorHelpers';
 import { smoothLerpPosition, lerpDistance } from '../stores/animStore';
 import useAnimState from '../hooks/useAnimState';
 import useAppStore from '../stores/appStore';
+import { blobVert, blobFrag } from '../data/shaderData';
 
 function Blob({ colors, radius }) {
     const meshRef = useRef(null);
@@ -19,38 +20,30 @@ function Blob({ colors, radius }) {
     const data = useAnimState();
 
     useEffect(() => {
-        const loadShaders = async () => {
-            const vertexShader = await fetch('/shaders/test.vert').then((res) =>
-                res.text()
-            );
-            const fragmentShader = await fetch('/shaders/test.frag').then(
-                (res) => res.text()
-            );
+        const vertexShader = blobVert;
+        const fragmentShader = blobFrag;
 
-            const material = new THREE.ShaderMaterial({
-                vertexShader,
-                fragmentShader,
-                uniforms: {
-                    uTime: { value: 0.0 },
-                    uResolution: {
-                        value: new THREE.Vector2(
-                            window.innerWidth,
-                            window.innerHeight
-                        ),
-                    },
-                    uColorLow: { value: hexToRgb(colors.lo) },
-                    uColorMid: { value: hexToRgb(colors.md) },
-                    uColorHigh: { value: hexToRgb(colors.hi) },
-                    uMinDist: { value: currentData.current.distance.min },
-                    uMaxDist: { value: currentData.current.distance.max },
+        const material = new THREE.ShaderMaterial({
+            vertexShader,
+            fragmentShader,
+            uniforms: {
+                uTime: { value: 0.0 },
+                uResolution: {
+                    value: new THREE.Vector2(
+                        window.innerWidth,
+                        window.innerHeight
+                    ),
                 },
-                transparent: true,
-            });
+                uColorLow: { value: hexToRgb(colors.lo) },
+                uColorMid: { value: hexToRgb(colors.md) },
+                uColorHigh: { value: hexToRgb(colors.hi) },
+                uMinDist: { value: currentData.current.distance.min },
+                uMaxDist: { value: currentData.current.distance.max },
+            },
+            transparent: true,
+        });
 
-            setShaderMaterial(material);
-        };
-
-        loadShaders();
+        setShaderMaterial(material);
     }, [colors, currentData]);
 
     useFrame((state, delta) => {

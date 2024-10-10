@@ -21,7 +21,8 @@ function LoadingScreen() {
 
     useEffect(() => {
         loadingInterval.current = setInterval(() => {
-            setPercentage((prev) => (prev >= loadingLimit ? prev : prev + 1));
+            // setPercentage((prev) => (prev >= loadingLimit ? prev : prev + 1));
+            setPercentage((prev) => (prev + 1));
         }, 4);
 
         return () => {
