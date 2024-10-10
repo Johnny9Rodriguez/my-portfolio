@@ -4,13 +4,14 @@ const creativityData = {
             EN: `I've always dreamed of creating my own video game. When I began my Computer Science 
                 studies at University in 2019, I also started to learn Unity alongside. In fact, Unity 
                 served as my introduction to coding, and with C# being 
-                similar to Java, our first language at Uni, I found the learning process both enjoyable 
-                and beneficial for my studies.`,
+                similar to Java, my first language at Uni, I found the learning process enjoyable 
+                and was able to transfer this knowledge to my studies.`,
             DE: `Ich habe schon immer davon geträumt, mein eigenes Videospiel zu entwickeln. Als ich 
                 2019 mein Informatikstudium an der Universität begann, fing ich gleichzeitig an, 
                 Unity zu lernen. Tatsächlich war Unity mein Einstieg in die Programmierung, und da 
-                C# Java, unserer ersten Programmiersprache an der Uni, ähnlich ist, fand ich den 
-                Lernprozess sowohl angenehm als auch förderlich für mein Studium.`,
+                sich C# und Java, meine erste Programmiersprache an der Uni, sehr ähnlich sind, 
+                fand ich den Lernprozess sehr angenehm und ich konnte mein Wissen auf mein Studium
+                übertragen.`,
         },
         p2: {
             EN: `Being a big fan of horror games, particularly the classic Silent Hill and Resident 
