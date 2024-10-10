@@ -139,7 +139,7 @@ const creativityData = {
                 exams.`,
             DE: `In den letzten fünf Jahren habe ich meine Sprachlernerfahrungen genutzt, um auf der 
                 iTalki-Plattform Deutsch zu unterrichten. Während meines Studiums suchte ich einen 
-                Teilzeitjob, und Online-Deutschlehrer zu sein, schien perfekt zu passen. Ich half 
+                Minijob, und Online-Deutschlehrer zu sein, schien perfekt zu passen. Ich half 
                 zahlreichen Schülern, ihr Deutsch zu verbessern, sich in Deutschland einzuleben und 
                 ihre Prüfungen zu bestehen.`,
         },

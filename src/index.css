@@ -24,3 +24,7 @@ html {
 .greeting {
   font-family: 'Nothing You Could Do';
 }
+
+.pixelated {
+  image-rendering: pixelated;
+}

@@ -38,7 +38,7 @@ function GameShowcase() {
                 <img
                     src='images/mantis-preview.gif'
                     alt='game-preview'
-                    className='rounded-xl border-2 border-white/20'
+                    className='brightness-125 rounded-xl border-2 border-white/20'
                 />
                 <div>{creativityData.game.p3[language]}</div>
                 <div>{creativityData.game.p4[language]}</div>
