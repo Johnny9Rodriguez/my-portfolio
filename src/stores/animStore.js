@@ -118,12 +118,12 @@ export const animTargets = {
             },
             distance: {
                 start: {
-                    min: 8,
-                    max: 12,
+                    min: 5,
+                    max: 9.5,
                 },
                 end: {
-                    min: 8,
-                    max: 12,
+                    min: 4,
+                    max: 8,
                 },
             },
         },
@@ -140,12 +140,12 @@ export const animTargets = {
             },
             distance: {
                 start: {
-                    min: 8,
-                    max: 12,
+                    min: 4,
+                    max: 9.5,
                 },
                 end: {
-                    min: 8,
-                    max: 12,
+                    min: 5,
+                    max: 10,
                 },
             },
         },

@@ -3,13 +3,11 @@ import { useFrame } from '@react-three/fiber';
 import useMousePosition from '../../hooks/useMousePosition';
 import useAppStore from '../../stores/appStore';
 import { lerp, smoothstep } from '../../utils/mathHelpers';
-import useWindowWidth from '../../hooks/useWindowWidth';
 
-function HomeTagAnimation({ objectRef, position }) {
+function HomeTagAnimation({ objectRef, position, setOffset, viewport }) {
     const { normalizedMousePosition } = useMousePosition();
     const { routerPath, scrollRatio } = useAppStore();
 
-    const windowWidth = useWindowWidth();
     const intensity = 0.5;
 
     let currentX = useRef(0);
@@ -36,10 +34,11 @@ function HomeTagAnimation({ objectRef, position }) {
                 delta * 12
             );
 
-            if (windowWidth > 720) {
+            if (viewport.width > 30) {
                 objectRef.current.position.x = position[0] + currentX.current;
             }
             objectRef.current.position.y = currentY.current;
+            objectRef.current.position.z = position[2];
         }
     });
 
