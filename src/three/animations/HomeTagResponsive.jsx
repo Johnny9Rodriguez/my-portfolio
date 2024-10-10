@@ -6,16 +6,16 @@ function HomeTagResponsive({ setPosition, setScale }) {
     const windowWidth = useWindowWidth();
 
     useEffect(() => {
-        const minPosition = [2.8, 1, 10];
-        const maxPosition = [0, 1, 10];
-        const minScale = 0.6;
+        const minPosition = [-0.3, 1, 10];
+        const maxPosition = [-3, 1, 10];
+        const minScale = 0.4;
         const maxScale = 1;
 
         if (windowWidth > 1400) {
             setPosition(maxPosition);
             setScale(maxScale);
-        } else if (windowWidth >= 400) {
-            const t = (windowWidth - 400) / 1000;
+        } else if (windowWidth >= 720) {
+            const t = (windowWidth - 720) / (1400 - 720);
             const x = lerp(minPosition[0], maxPosition[0], t);
 
             const newPosition = [x, 1, 10];

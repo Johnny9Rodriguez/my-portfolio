@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Root from './pages/Root';
 import HomePage from './pages/HomePage';
 import ProjectPage from './pages/ProjectPage';
+import CreativityPage from './pages/CreativityPage';
 import ContactPage from './pages/ContactPage';
 import LoadingScreen from './pages/LoadingScreen';
 import BackgroundCanvas from './three/BackgroundCanvas';
@@ -28,7 +29,7 @@ function App() {
                 },
                 {
                     path: '/creativity',
-                    element: <div>Creativity</div>,
+                    element: <CreativityPage />,
                 },
                 {
                     path: '/contact',

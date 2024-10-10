@@ -2,17 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { FaSquareFull } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import useAppStore from '../stores/appStore';
+import navData from '../data/navData';
 
-function NavLink({ name, isMobile }) {
-    const { routerPath, setRouterPath } = useAppStore();
+function NavLink({ id, isMobile }) {
+    const { routerPath, setRouterPath, language } = useAppStore();
     const [isSelected, setIsSelected] = useState(false);
     const [mouseOver, setMouseOver] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        setIsSelected(routerPath === name);
-    }, [routerPath, name]);
+        setIsSelected(routerPath === navData[id].path);
+    }, [routerPath, id]);
 
     const selectedStyle = 'text-[#0098db]';
 
@@ -20,8 +21,8 @@ function NavLink({ name, isMobile }) {
     const squareOnHover = 'opacity-100 scale-50';
 
     const handleClick = () => {
-        setRouterPath(name);
-        navigate('/' + name);
+        setRouterPath(navData[id].path);
+        navigate('/' + navData[id].path);
     };
 
     return (
@@ -47,7 +48,7 @@ function NavLink({ name, isMobile }) {
                 />
             )}
             <div className='relative'>
-                <div className='relative z-10'>{name.toUpperCase()}</div>
+                <div className='relative z-10'>{navData[id][language]}</div>
                 <div
                     className='absolute top-0 left-0 h-full z-0 bg-[#203562]'
                     style={{

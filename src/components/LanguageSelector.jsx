@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { MdLanguage } from 'react-icons/md';
 import { RxTriangleRight } from 'react-icons/rx';
-import { useLanguageStore } from '../stores/langStore';
+import useAppStore from '../stores/appStore';
 
 function LanguageSelector({ isMobile }) {
     const [mouseOver, setMouseOver] = useState(false);
     const [clicked, setClicked] = useState(false);
 
-    const { language, setLanguage } = useLanguageStore();
+    const { language, setLanguage } = useAppStore();
 
     const handleClick = () => {
         if (!clicked) {
-            setLanguage(language === 'EN' ? 'DE' : 'EN');
+            const newLanguage = language === 'EN' ? 'DE' : 'EN';
+            setLanguage(newLanguage);
             setClicked(isMobile ? false : true);
+            localStorage.setItem('language', newLanguage);
         }
     };
 
