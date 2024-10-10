@@ -52,7 +52,7 @@ function MusicPlayer() {
     }, [track, state]);
 
     return (
-        <div className='w-full flex flex-col gap-2 rounded-xl bg-white/20 p-4 select-none'>
+        <div className='w-full flex flex-col gap-2 rounded-xl bg-[#203562]/60 p-4 select-none'>
             <DurationSlider
                 playerRef={playerRef.current}
                 hasEnded={hasEnded}
