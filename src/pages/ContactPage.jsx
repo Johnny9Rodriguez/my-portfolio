@@ -10,7 +10,7 @@ const InputField = ({ placeholder, value, onChange }) => {
         <input
             type='text'
             placeholder={placeholder}
-            className='flex-grow text-[#white] border-2 border-[#203562] focus:border-[#0ce6f2] bg-[#203562]/60 px-2 py-2 rounded-xl outline-none placeholder-[#0098db]'
+            className='flex-grow text-[#white] border-2 border-transparent focus:border-[#0ce6f2] bg-[#203562]/60 px-2 py-2 rounded-xl outline-none placeholder-[#0098db]'
             value={value}
             onChange={onChange}
             spellCheck={false}
@@ -119,7 +119,7 @@ function ContactPage() {
                     />
                 </div>
                 <textarea
-                    className='outline-none text-white bg-[#203562]/60 focus:border-[#0ce6f2] border-2 border-[#203562] placeholder-[#0098db] px-2 py-2 resize-none rounded-xl'
+                    className='outline-none text-white bg-[#203562]/60 focus:border-[#0ce6f2] border-2 border-transparent placeholder-[#0098db] px-2 py-2 resize-none rounded-xl'
                     spellCheck={false}
                     rows={10}
                     value={message}
